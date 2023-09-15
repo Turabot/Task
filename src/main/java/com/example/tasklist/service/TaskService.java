@@ -58,11 +58,11 @@ public class TaskService {
   }
 
   public void deleteTask(long taskId) {
+    log.info("Delete task by id: '{}'", taskId);
     var exists = taskRepository.existsById(taskId);
     if (!exists) {
       throw new NotFoundException("Task with identifier " + taskId + " not found");
     }
-    log.debug("Delete task by id: '{}'", taskId);
     taskRepository.deleteById(taskId);
   }
 }
